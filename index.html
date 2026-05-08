@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Báo Cáo Thực Hành Mạng - Nhóm 5</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+            background-color: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            font-size: 11pt;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #0056b3;
+            font-size: 18pt;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        h2 {
+            color: #004085;
+            font-size: 13pt;
+            border-left: 4px solid #0056b3;
+            padding-left: 10px;
+            margin-top: 25px;
+            text-transform: uppercase;
+        }
+        h3 {
+            color: #333;
+            font-size: 11pt;
+            margin-top: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f0f7ff;
+            color: #0056b3;
+        }
+        .info-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d63384;
+        }
+        ul {
+            margin-top: 5px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Báo Cáo Bài Tập Nhóm</h1>
+        <h2>Cấu Hình Hệ Thống Mạng</h2>
+    </div>
+
+    <div class="info-box">
+        <p><strong>Môn học:</strong> Introduction to Network & Telecommunications Technology</p>
+        <p><strong>Mã môn:</strong> CMU-CS 252 BIS</p>
+        <p><strong>Nhóm thực hiện:</strong> Nhóm 5</p>
+        <p><strong>Danh sách thành viên:</strong></p>
+        <ul>
+            <li>1. Dương Công Trường (Team Leader)</li>
+            <li>2. Nguyễn Hồng Phước</li>
+            <li>3. Tiết Duy Tân</li>
+            <li>4. Võ Anh Vũ</li>
+        </ul>
+    </div>
+
+    <h2>I. Quy Ước Biến Số Và Thông Số Nhóm</h2>
+    <p>Dựa theo yêu cầu đề bài, nhóm tiến hành xác định các biến số để thiết lập dải địa chỉ mạng:</p>
+    <ul>
+        <li><strong>X (Số thứ tự nhóm):</strong> 5</li>
+        <li><strong>N (Tên nhóm viết theo số):</strong> 5</li>
+        <li><strong>M (Tên nhóm viết theo chữ):</strong> nam</li>
+        <li><strong>Địa chỉ mạng tổng quát của nhóm 5:</strong> 152.70.x.0/24</li>
+    </ul>
+
+    <h2>II. Bảng Phân Hoạch Địa Chỉ IP</h2>
+    <p>Hệ thống mạng được chia thành 5 phân đoạn mạng (3 LAN, 2 WAN). Dưới đây là bảng phân hoạch chi tiết và IP đã cấu hình cho các Interface trên Router:</p>
+    <table>
+        <tr>
+            <th>Phân đoạn mạng</th>
+            <th>Địa chỉ mạng</th>
+            <th>Cổng (Interface) & IP tương ứng</th>
+        </tr>
+        <tr>
+            <td>LAN 1</td>
+            <td>152.70.1.0/24</td>
+            <td>Router2 (Fa0/0): 152.70.1.254</td>
+        </tr>
+        <tr>
+            <td>WAN 1</td>
+            <td>152.70.2.0/24</td>
+            <td>Router2 (Se2/0): 152.70.2.1</td>
+        </tr>
+        <tr>
+            <td>LAN 2</td>
+            <td>152.70.3.0/24</td>
+            <td>Router1 (Fa0/0): 152.70.3.254</td>
+        </tr>
+        <tr>
+            <td>WAN 2</td>
+            <td>152.70.4.0/24</td>
+            <td>Router1 (Se3/0): 152.70.4.2<br>Router0 (Se2/0): 152.70.4.1</td>
+        </tr>
+        <tr>
+            <td>LAN 3</td>
+            <td>152.70.5.0/24</td>
+            <td>Router0 (Fa0/0): 152.70.5.254</td>
+        </tr>
+    </table>
+
+    <h2>III. Cấu Hình Thiết Bị Đầu Cuối Và Dịch Vụ</h2>
+    
+    <h3>1. Cấu hình Máy trạm (PC)</h3>
+    <ul>
+        <li><strong>PC1:</strong> Đã cấu hình Static IP là <span class="code-block">152.70.5.2/24</span>, với Default Gateway trỏ về Router0 là <span class="code-block">152.70.5.254</span>.</li>
+        <li><strong>PC0:</strong> Đã cấu hình nhận IP tự động thành công thông qua dịch vụ DHCP.</li>
+    </ul>
+
+    <h3>2. Cấu hình Server DHCP + DNS</h3>
+    <ul>
+        <li><strong>Địa chỉ IP tĩnh:</strong> <span class="code-block">152.70.5.253</span>, Default Gateway: <span class="code-block">152.70.5.254</span>.</li>
+        <li><strong>Dịch vụ DHCP:</strong> Đã thiết lập Pool DHCP để cấp phát IP động, Gateway và DNS Server (<span class="code-block">152.70.5.253</span>) cho PC0.</li>
+        <li><strong>Dịch vụ DNS:</strong> Đã thêm các bản ghi (Record) để phân giải tên miền:
+            <ul>
+                <li><span class="code-block">nhom5.com</span> trỏ về IP của Server groupN (<span class="code-block">152.70.1.1</span>).</li>
+                <li><span class="code-block">nhomnam.com</span> trỏ về IP của Server groupM (<span class="code-block">152.70.3.1</span>).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>3. Cấu hình Server Web (HTTP)</h3>
+    <p>Nhóm đã thiết kế lại toàn bộ giao diện HTML và CSS để tạo tính chuyên nghiệp và khác biệt:</p>
+    <ul>
+        <li><strong>Server groupN:</strong> Cấu hình trang chủ hiển thị "HỆ THỐNG MẠNG NHÓM 5" với giao diện Light Theme hiện đại. Đã tích hợp các Quick Links dẫn đến các trang thông tin thành viên, bản quyền và sơ đồ mạng trực quan.</li>
+        <li><strong>Server groupM:</strong> Cấu hình trang chủ hiển thị "NHÓM NAM - GROUP M" với giao diện Dark Mode tối màu khác biệt, chuyên nghiệp.</li>
+    </ul>
+
+    <h2>IV. Cấu Hình Định Tuyến (Routing)</h2>
+    <p>Để các thiết bị trên các dải mạng khác nhau có thể giao tiếp được với nhau, nhóm đã sử dụng phương thức định tuyến tĩnh (Static Route) trên cả 3 Router.</p>
+    <ul>
+        <li><strong>Trên Router2:</strong> Thêm các tuyến đường đến LAN 2 (152.70.3.0), WAN 2 (152.70.4.0) và LAN 3 (152.70.5.0) qua Next Hop là cổng Se2/0 của Router1 (<span class="code-block">152.70.2.2</span>).</li>
+        <li><strong>Trên Router1:</strong> Thêm tuyến đường đến LAN 1 (152.70.1.0) qua Next Hop <span class="code-block">152.70.2.1</span> và LAN 3 (152.70.5.0) qua Next Hop <span class="code-block">152.70.4.1</span>.</li>
+        <li><strong>Trên Router0:</strong> Thêm các tuyến đường đến LAN 1 (152.70.1.0), WAN 1 (152.70.2.0) và LAN 2 (152.70.3.0) qua Next Hop là cổng Se3/0 của Router1 (<span class="code-block">152.70.4.2</span>).</li>
+    </ul>
+
+    <h2>V. Kết Quả Kiểm Thử (Testing)</h2>
+    <p>Hệ thống mạng đã hoạt động ổn định và đáp ứng 100% yêu cầu đề bài:</p>
+    <ul>
+        <li>Sơ đồ mạng thông suốt, các máy tính ở các mạng LAN khác nhau (PC0, PC1) có thể lệnh Ping thấy nhau và Ping thành công đến tất cả các Server.</li>
+        <li>Truy cập dịch vụ Web bằng tên miền <span class="code-block">nhom5.com</span> và <span class="code-block">nhomnam.com</span> thành công.</li>
+    </ul>
+</body>
+</html>
